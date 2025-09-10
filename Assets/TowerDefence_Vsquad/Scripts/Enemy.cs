@@ -20,9 +20,13 @@ public class Enemy : MonoBehaviour {
 
     void Start()
     {            
+
         anim = GetComponent<Animator>();
         Enemy_Hp = Enemybug.GetComponent<EnemyHp>();
-        previous_Speed = Speed;        
+        previous_Speed = Speed;
+
+        GameObject mageTower = GameObject.Find("Tower Mage");
+        waypoints = new Transform[] { mageTower.transform };
     }
 
     // Attack
@@ -40,6 +44,8 @@ public class Enemy : MonoBehaviour {
             transform.LookAt(targetPosition);
             anim.SetBool("RUN", false);
             anim.SetBool("Attack", true);
+
+            
             
         }
 
@@ -62,7 +68,8 @@ public class Enemy : MonoBehaviour {
     void GetDamage ()
 
     {        
-            EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);       
+     EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);  
+
     }
 
     
